@@ -1,0 +1,12 @@
+product: jvm/app
+
+dependencies:
+  - ../presentation
+  - $compose.desktop.currentOs
+
+
+settings:
+  compose: enabled
+  jvm:
+    jdk:
+      version: 21

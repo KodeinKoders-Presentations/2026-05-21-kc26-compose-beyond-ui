@@ -1,0 +1,19 @@
+# INTELLIJ
+.idea/
+
+# SYSTEM FILES
+*~
+.DS_STORE
+
+# KOTLIN
+.kotlin
+
+# AMPER
+build/
+local.properties
+
+# JS
+node_modules/
+
+# CUP
+.cup
