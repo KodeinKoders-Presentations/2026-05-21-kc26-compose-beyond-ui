@@ -8,10 +8,11 @@ repositories:
       file: ../local.properties
       usernameKey: gpr.user
       passwordKey: gpr.key
-
+  - url: mavenLocal
 dependencies:
   - $compose.foundation: exported
   - $compose.material3: exported
+  - $compose.components.resources
   - $libs.cup
   - $libs.cup.plugin.imageExport
   - $libs.cup.plugin.keyEvents

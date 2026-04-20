@@ -1,7 +1,7 @@
 [versions]
-cup = "1.0.0-Beta-13"                   # https://github.com/KodeinKoders/CuP/releases
+cup = "1.0.0-Beta-14"                   # https://github.com/KodeinKoders/CuP/releases
 emoji = "2.3.0"                         # https://github.com/kosi-libs/Emoji.kt/releases
-kodein-theme = "3.0.0"                  # https://github.com/KodeinKoders/Kodein-Themes/releases
+kodein-theme = "3.1.0"                  # https://github.com/KodeinKoders/Kodein-Themes/releases
 qrose = "1.1.2"                         # https://github.com/alexzhirkevich/qrose/releases
 
 [libraries]
@@ -15,14 +15,3 @@ cup-widgets-sourceCode = { module = "net.kodein.cup:cup-widgets-source-code", ve
 emoji-compose = { module = "org.kodein.emoji:emoji-compose-m3", version.ref = "emoji" }
 kodein-theme = { module = "net.kodein.themes:cup", version.ref = "kodein-theme" }
 qrose = { module = "io.github.alexzhirkevich:qrose", version.ref = "qrose" }
-
-[bundles]
-cupBB = [
-    "cup",
-    "cup-plugin-imageExport",
-    "cup-plugin-keyEvents",
-    "cup-plugin-laser",
-    "cup-plugin-speakerWindow",
-    "cup-widgets-material3",
-    "cup-widgets-sourceCode",
-]
