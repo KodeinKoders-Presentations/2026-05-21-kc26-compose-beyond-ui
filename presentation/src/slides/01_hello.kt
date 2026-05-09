@@ -2,7 +2,9 @@ package slides
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,6 +20,9 @@ import net.kodein.cup.Slide
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.theme.cup.KodeinSourceCode
 import net.kodein.theme.cup.ui.KodeinFadeAnimatedVisibility
+import org.kodein.emoji.Emoji
+import org.kodein.emoji.compose.NotoAnimatedEmoji
+import org.kodein.emoji.people_body.hand_fingers_open.WavingHand
 import utils.OriginalDensityFrame
 
 
@@ -33,17 +38,20 @@ val hello by Slide(
                     .size(480.dp, 360.dp)
                     .border(1.dp, MaterialTheme.colorScheme.onBackground)
             ) {
-                Text(
-                    buildAnnotatedString {
-                        withStyle(MaterialTheme.typography.displayLarge.toSpanStyle()) {
-                            appendLine("Hello, KotlinConf!")
-                        }
-                        withStyle(MaterialTheme.typography.titleLarge.toSpanStyle()) {
-                            append("I'm want to show you 2 tricks!")
-                        }
-                    },
-                    textAlign = TextAlign.Center,
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    NotoAnimatedEmoji(Emoji.WavingHand, Modifier.padding(16.dp).size(32.dp))
+                    Text(
+                        buildAnnotatedString {
+                            withStyle(MaterialTheme.typography.displayLarge.toSpanStyle()) {
+                                appendLine("Hello, KotlinConf!")
+                            }
+                            withStyle(MaterialTheme.typography.titleLarge.toSpanStyle()) {
+                                append("I'm want to show you 2 tricks!")
+                            }
+                        },
+                        textAlign = TextAlign.Center,
+                    )
+                }
             }
         }
 
@@ -65,21 +73,24 @@ val hello by Slide(
                                 $S.size(480.dp, 360.dp)$X
                                 .border(1.dp, colorScheme.onBackground)
                         ) {
-                            Text(
-                                buildAnnotatedString {
-                                    withStyle(typography.displayLarge) {
-                                        appendLine("Hello, KotlinConf!")
-                                    }
-                                    withStyle(typography.titleLarge) {
-                                        append("I'm want to show you 2 tricks!")
-                                    }
-                                },
-                                textAlign = TextAlign.Center,
-                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                NotoAnimatedEmoji(Emoji.WavingHand, Modifier.padding(16.dp).size(32.dp))
+                                Text(
+                                    buildAnnotatedString {
+                                        withStyle(typography.displayLarge) {
+                                            appendLine("Hello, KotlinConf!")
+                                        }
+                                        withStyle(typography.titleLarge) {
+                                            append("I'm want to show you 2 tricks!")
+                                        }
+                                    },
+                                    textAlign = TextAlign.Center,
+                                )
+                            }
                         }
                     """
                 },
-                fontSize = 10.sp,
+                fontSize = 9.sp,
             )
         }
     }

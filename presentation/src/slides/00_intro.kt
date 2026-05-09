@@ -2,32 +2,51 @@ package slides
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import io.github.alexzhirkevich.qrose.options.*
+import androidx.compose.ui.unit.em
+import io.github.alexzhirkevich.qrose.options.QrBallShape
+import io.github.alexzhirkevich.qrose.options.QrBrush
+import io.github.alexzhirkevich.qrose.options.QrColors
+import io.github.alexzhirkevich.qrose.options.QrFrameShape
+import io.github.alexzhirkevich.qrose.options.QrPixelShape
+import io.github.alexzhirkevich.qrose.options.QrShapes
+import io.github.alexzhirkevich.qrose.options.circle
+import io.github.alexzhirkevich.qrose.options.roundCorners
+import io.github.alexzhirkevich.qrose.options.solid
 import io.github.alexzhirkevich.qrose.rememberQrCodePainter
+import net.kodein.cup.SLIDE_SIZE_16_9
 import net.kodein.cup.Slide
+import net.kodein.cup.SlideSpecs
 import net.kodein.theme.KodeinColors
 import net.kodein.theme.compose.Color
 import net.kodein.theme.compose.Link
-import net.kodein.theme.cup.kStyled
 import net.kodein.theme.cup.ui.KodeinLogo
-import kotlin.time.Duration.Companion.seconds
+import org.jetbrains.compose.resources.imageResource
+import presentation.generated.resources.Res
+import presentation.generated.resources.kc26_background
+import presentation.generated.resources.kc26_logo
 
 
 @Composable
@@ -54,48 +73,61 @@ fun LinksToThisPresentation() {
             )
         ),
         contentDescription = "This presentation",
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier.padding(8.dp).size(64.dp)
     )
 }
 
-val intro by Slide {
-
-    KodeinLogo("koders", Modifier.height(64.dp)) {}
-
-    Spacer(Modifier.height(16.dp))
-
-    val value by rememberInfiniteTransition().animateFloat(
-        initialValue = .9f,
-        targetValue = 1.1f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(3000),
-            repeatMode = RepeatMode.Reverse
-        )
+val intro by Slide(
+    specs = SlideSpecs(
+        size = SLIDE_SIZE_16_9
     )
-    Text(
-        text = "Compose beyond UI",
-        textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.displayLarge,
+) {
+    Image(
+        bitmap = imageResource(Res.drawable.kc26_logo),
+        contentDescription = "KotlinConf 2026 Logo",
+        contentScale = ContentScale.FillWidth,
         modifier = Modifier
-            .scale(value)
+            .width(128.dp)
+            .align(Alignment.Start)
     )
 
-    Text(
-        text = kStyled { "${+m}KotlinConf${-m} - 21 May 2026" },
-        textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.titleSmall,
-        fontWeight = FontWeight.Light
-    )
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Spacer(Modifier.height(32.dp))
 
-    Text(
-        text = "Salomon BRYS",
-        textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.titleLarge,
-        color = Color(KodeinColors.light_orange)
-    )
+            KodeinLogo("koders", Modifier.height(64.dp)) { Text("Salomon BRYS", fontSize = 1.15.em) }
 
-    Spacer(Modifier.height(32.dp))
+            Spacer(Modifier.height(16.dp))
 
-    LinksToThisPresentation()
-
+            val value by rememberInfiniteTransition().animateFloat(
+                initialValue = .9f,
+                targetValue = 1.1f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(3000),
+                    repeatMode = RepeatMode.Reverse
+                )
+            )
+            Text(
+                text = "Compose beyond UI",
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.displayLarge,
+                modifier = Modifier
+                    .scale(value)
+            )
+        }
+        Image(
+            bitmap = imageResource(Res.drawable.kc26_background),
+            contentDescription = null,
+            contentScale = ContentScale.FillHeight,
+            modifier = Modifier
+                .height(256.dp)
+        )
+    }
 }

@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.input.pointer.pointerInput
@@ -43,8 +42,7 @@ fun OriginalDensityFrame(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .size(frameWidth, frameHeight)
-                .border(1.dp, Color(KodeinColors.light_orange), RoundedCornerShape(4.dp))
-                .clip(RoundedCornerShape(4.dp))
+                .border(2.dp, Color(KodeinColors.light_orange), RoundedCornerShape(8.dp, 8.dp))
         ) {
             Box(Modifier.padding(4.dp)) {
                 CompositionLocalProvider(

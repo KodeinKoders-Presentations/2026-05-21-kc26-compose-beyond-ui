@@ -94,7 +94,7 @@ val density by Slide(
                         }
                     """
                 },
-                fontSize = 10.sp,
+                fontSize = 9.sp,
             )
         }
     }

@@ -11,6 +11,7 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -22,21 +23,35 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import io.github.alexzhirkevich.qrose.options.QrBallShape
+import io.github.alexzhirkevich.qrose.options.QrBrush
+import io.github.alexzhirkevich.qrose.options.QrColors
+import io.github.alexzhirkevich.qrose.options.QrFrameShape
+import io.github.alexzhirkevich.qrose.options.QrPixelShape
+import io.github.alexzhirkevich.qrose.options.QrShapes
+import io.github.alexzhirkevich.qrose.options.circle
+import io.github.alexzhirkevich.qrose.options.roundCorners
+import io.github.alexzhirkevich.qrose.options.solid
+import io.github.alexzhirkevich.qrose.rememberQrCodePainter
 import net.kodein.cup.Slide
+import net.kodein.cup.widgets.material3.BulletPoints
+import net.kodein.theme.KodeinColors
+import net.kodein.theme.compose.Color
 import net.kodein.theme.compose.Link
+import net.kodein.theme.cup.ui.KodeinAnimatedVisibility
 import org.jetbrains.compose.resources.imageResource
 import presentation.generated.resources.Res
 import presentation.generated.resources.cup
 
 
 val cup by Slide(
-    stepCount = 10
+    stepCount = 4
 ) { step ->
 
     AnimatedVisibility(
         visible = step >= 1,
-        enter = fadeIn(tween(1500)) + expandVertically(tween(1500)),
-        exit = fadeOut(tween(1500)) + shrinkVertically(tween(1500)),
+        enter = fadeIn(tween(1500)) + expandVertically(tween(1500), clip = false),
+        exit = fadeOut(tween(1500)) + shrinkVertically(tween(1500), clip = false),
     ) {
         Image(
             bitmap = imageResource(Res.drawable.cup),
@@ -44,7 +59,7 @@ val cup by Slide(
             modifier = Modifier
                 .padding(bottom = 16.dp)
                 .clip(CircleShape)
-                .size(128.dp)
+                .size(96.dp)
         )
     }
 
@@ -83,7 +98,51 @@ val cup by Slide(
         Link(
             text = "https://github.com/KodeinKoders/CuP",
             uri = "https://github.com/KodeinKoders/CuP",
+            modifier = Modifier.padding(bottom = 8.dp)
         )
+    }
+    AnimatedVisibility(
+        visible = step >= 2,
+        enter = fadeIn(tween(1500)) + expandVertically(tween(1500)),
+        exit = fadeOut(tween(1500)) + shrinkVertically(tween(1500)),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.height(152.dp)
+        ) {
+            Image(
+                painter = rememberQrCodePainter(
+                    "https://github.com/KodeinKoders/CuP",
+                    shapes = QrShapes(
+                        ball = QrBallShape.roundCorners(.25f),
+                        frame = QrFrameShape.roundCorners(.25f),
+                        darkPixel = QrPixelShape.circle(),
+                    ),
+                    colors = QrColors(
+                        dark = QrBrush.solid(Color(KodeinColors.light_orange))
+                    )
+                ),
+                contentDescription = "Kodein CuP",
+                modifier = Modifier.size(96.dp)
+            )
+
+            KodeinAnimatedVisibility(
+                visible = step >= 3,
+            ) {
+                BulletPoints(
+                    spacedBy = 2.dp,
+                    modifier = Modifier.padding(start = 32.dp)
+                ) {
+                    item { Text("Multi-step slides") }
+                    item { Text("Animations") }
+                    item { Text("Code highlighting") }
+                    item { Text("Speaker notes") }
+                    item { Text("Laser pointer") }
+                    item { Text("PDF export") }
+                    item { Text("...and more!") }
+                }
+            }
+        }
     }
 }
 

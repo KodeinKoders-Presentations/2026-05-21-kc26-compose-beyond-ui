@@ -9,6 +9,7 @@ repositories:
       usernameKey: gpr.user
       passwordKey: gpr.key
   - url: mavenLocal
+
 dependencies:
   - $compose.foundation: exported
   - $compose.material3: exported
@@ -26,7 +27,10 @@ dependencies:
 
 settings:
   kotlin:
-    version: 2.3.20
+    version: 2.3.21
+    freeCompilerArgs: [
+      -Xcontext-parameters
+    ]
   compose:
     enabled: true
     version: 1.10.3

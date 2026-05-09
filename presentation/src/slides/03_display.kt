@@ -9,7 +9,9 @@ import androidx.compose.animation.slideIn
 import androidx.compose.animation.slideOut
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,6 +38,11 @@ import net.kodein.cup.Slide
 import net.kodein.cup.sa.rememberSourceCode
 import net.kodein.theme.cup.KodeinSourceCode
 import net.kodein.theme.cup.ui.KodeinFadeAnimatedVisibility
+import org.kodein.emoji.Emoji
+import org.kodein.emoji.compose.NotoAnimatedEmoji
+import org.kodein.emoji.compose.m3.TextWithNotoAnimatedEmoji
+import org.kodein.emoji.people_body.hand_fingers_open.WavingHand
+import org.kodein.emoji.smileys_emotion.face_affection.HeartEyes
 import utils.OriginalDensityFrame
 import kotlin.math.min
 
@@ -84,21 +91,24 @@ val display by Slide(
                             Box(contentAlignment = Alignment.Center) {
                                 when (s) {
                                     0 -> {
-                                        Text(
-                                            buildAnnotatedString {
-                                                withStyle(MaterialTheme.typography.displayLarge.toSpanStyle()) {
-                                                    appendLine("Hello, KotlinConf!")
-                                                }
-                                                withStyle(MaterialTheme.typography.titleLarge.toSpanStyle()) {
-                                                    append("I'm want to show you 2 tricks!")
-                                                }
-                                            },
-                                            textAlign = TextAlign.Center,
-                                        )
+                                        Row(verticalAlignment = Alignment.CenterVertically) {
+                                            NotoAnimatedEmoji(Emoji.WavingHand, Modifier.padding(16.dp).size(32.dp))
+                                            Text(
+                                                buildAnnotatedString {
+                                                    withStyle(MaterialTheme.typography.displayLarge.toSpanStyle()) {
+                                                        appendLine("Hello, KotlinConf!")
+                                                    }
+                                                    withStyle(MaterialTheme.typography.titleLarge.toSpanStyle()) {
+                                                        append("I'm want to show you 2 tricks!")
+                                                    }
+                                                },
+                                                textAlign = TextAlign.Center,
+                                            )
+                                        }
                                     }
                                     1 -> {
-                                        Text(
-                                            text = "Amazing!",
+                                        TextWithNotoAnimatedEmoji(
+                                            text = "Amazing! ${Emoji.HeartEyes}",
                                             textAlign = TextAlign.Center,
                                             style = MaterialTheme.typography.displayLarge,
                                         )
@@ -133,7 +143,7 @@ val display by Slide(
                         }
                     """
                 },
-                fontSize = 10.sp,
+                fontSize = 9.sp,
             )
         }
     }
