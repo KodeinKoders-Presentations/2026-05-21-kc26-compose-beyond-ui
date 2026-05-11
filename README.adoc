@@ -1,0 +1,9 @@
+= Compose beyond UI
+:author: Salomon BRYS
+
+[.lead]
+http://p.kodein.net/kc26
+
+By: {author}.
+
+//* http://youtu.be/code[date: event name]

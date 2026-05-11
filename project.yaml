@@ -1,4 +1,0 @@
-modules:
-  - presentation
-  - jvm-app
-  - wasmjs-app

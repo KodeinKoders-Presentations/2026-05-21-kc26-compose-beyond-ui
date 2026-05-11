@@ -1,0 +1,50 @@
+[versions]
+compose = "1.10.3"                      # https://github.com/JetBrains/compose-multiplatform/releases
+cup = "1.0.0-Beta-15"                   # https://github.com/KodeinKoders/CuP/releases
+emoji = "2.4.0"                         # https://github.com/kosi-libs/Emoji.kt/releases
+kodein-theme = "3.2.0"                  # https://github.com/KodeinKoders/Kodein-Themes/releases
+kotlin = "2.3.21"                       # https://github.com/jetbrains/kotlin/releases
+material3 = "1.10.0-alpha05"            # https://github.com/JetBrains/compose-multiplatform/releases
+materialIcons = "1.7.3"                 # https://github.com/JetBrains/compose-multiplatform/releases
+qrose = "1.1.2"                         # https://github.com/alexzhirkevich/qrose/releases
+
+[plugins]
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+cup = { id = "net.kodein.cup", version.ref = "cup" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+[libraries]
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+compose-material-icons = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIcons" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
+cup = { module = "net.kodein.cup:cup", version.ref = "cup" }
+cup-plugin-imageExport = { module = "net.kodein.cup:cup-plugin-image-export", version.ref = "cup" }
+cup-plugin-keyEvents = { module = "net.kodein.cup:cup-plugin-key-events", version.ref = "cup" }
+cup-plugin-laser = { module = "net.kodein.cup:cup-plugin-laser", version.ref = "cup" }
+cup-plugin-speakerWindow = { module = "net.kodein.cup:cup-plugin-speaker-window", version.ref = "cup" }
+cup-widgets-material3 = { module = "net.kodein.cup:cup-widgets-material3", version.ref = "cup" }
+cup-widgets-sourceCode = { module = "net.kodein.cup:cup-widgets-source-code", version.ref = "cup" }
+emoji-compose = { module = "org.kodein.emoji:emoji-compose-m3", version.ref = "emoji" }
+kodein-theme = { module = "net.kodein.themes:cup", version.ref = "kodein-theme" }
+qrose = { module = "io.github.alexzhirkevich:qrose", version.ref = "qrose" }
+
+[bundles]
+compose = [
+    "compose-components-resources",
+    "compose-foundation",
+    "compose-material3",
+    "compose-material-icons",
+    "compose-runtime",
+]
+cup = [
+    "cup",
+    "cup-plugin-imageExport",
+    "cup-plugin-keyEvents",
+    "cup-plugin-laser",
+    "cup-plugin-speakerWindow",
+    "cup-widgets-material3",
+    "cup-widgets-sourceCode",
+]

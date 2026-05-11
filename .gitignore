@@ -1,19 +1,21 @@
-# INTELLIJ
-.idea/
-
-# SYSTEM FILES
-*~
-.DS_STORE
-
-# KOTLIN
-.kotlin
-
-# AMPER
+### Gradle ###
+.gradle
 build/
-local.properties
+.gradletasknamecache
 
-# JS
+### IntelliJ IDEA ###
+.idea
+
+### Mac OS ###
+.DS_Store
+
+### kotlin ###
+.kotlin/
+
+### CuP ###
+.cup/
+cup-export/
+**/**/resources/cup-external-presenter-remote
+
+### Js ###
 node_modules/
-
-# CUP
-.cup
